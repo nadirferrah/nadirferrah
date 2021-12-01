@@ -1,0 +1,36 @@
+{% extends "admin/base_admin.html.twig" %}
+
+{% block body %}
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            {% for rubrique,messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ rubrique }} border-2 d-flex align-items-center" role="alert">
+                        <div class="bg-{{ rubrique }} me-3 icon-item"><span class="fas fa-check-circle text-white fs-3"></span></div>
+                        <p class="mb-0 flex-1">{{ message }}</p>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Formulaire d'ajout d'episode</h3>
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                    
+                    {{ form_widget(form) }}
+
+                    <button class="btn btn-primary mt-3">Ajouter</button>
+
+                    {{ form_end(form)}}
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>
+
+{% endblock %}
