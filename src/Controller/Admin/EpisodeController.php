@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Episode;
 use App\Form\EpisodeType;
+use App\Repository\EpisodeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,6 +29,7 @@ class EpisodeController extends AbstractController
         //Si t as bien vu que il y avait des donnees à traiter dans la requete
         if($form->isSubmitted() && $form->isValid())
         {
+       
             $em->persist($episode);
 
             $em->flush();
@@ -39,6 +41,20 @@ class EpisodeController extends AbstractController
 
         return $this->render("admin/episode/create.html.twig",[
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/episode/list",name="admin_episode_list")
+     */
+    public function list(EpisodeRepository $episodeRepository)
+    {
+        //Faire appel à la base de donnees et de recuperer la liste des episodes
+        $episodes = $episodeRepository->findAll();
+
+        //J envoie la vue les episodes que je viens de recuperer
+        return $this->render("admin/episode/list.html.twig",[
+            'episodes' => $episodes
         ]);
     }
 }
