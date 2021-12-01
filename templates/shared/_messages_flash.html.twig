@@ -1,0 +1,8 @@
+{% for rubrique,messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ rubrique }} border-2 d-flex align-items-center" role="alert">
+            <div class="bg-{{ rubrique }} me-3 icon-item"></div>
+            <p class="mb-0 flex-1">{{ message }}</p>
+        </div>
+    {% endfor %}
+{% endfor %}
