@@ -5,3 +5,26 @@
     background-repeat: no-repeat;
     height: 100vh;
 }
+
+#avatarProfile
+{
+    height: 200px;
+}
+
+#avatarProfile img
+{
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+    top: -120px;
+}
+
+@media screen and (max-width: 768px)
+{
+    #avatarProfile img
+    {
+        height: 100px;
+        top: -80px;
+    }
+}

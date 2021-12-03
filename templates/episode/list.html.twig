@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div class="container py-5">
+    <div class="row">
+        <div class="pagination mt-4 mb-3">
+            {{ knp_pagination_render(episodes) }}
+        </div>
+        {% for episode in episodes  %}
+            <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
+                <a href="{{ path('episode_show',{'id': episode.id }) }}">
+                    <div class="card">
+                        <div class="card-header">
+                            <img src="https://www.cdiscount.com/pdt2/9/4/2/1/700x700/auc3663439003942/rw/sticker-autocollant-enfant-manga-naruto-et-sasu.jpg" alt="naruto_sasuke" class="w-100">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="text-center">{{ episode.name }}</h3>
+                            <button class="btn btn-primary w-100"><i class="fas fa-eye"></i> Visionner</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+        <div class="pagination mt-4 mb-3">
+            {{ knp_pagination_render(episodes) }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
